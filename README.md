@@ -45,13 +45,13 @@ Lo utlimo que deberiamos hacer es clic en el botón **Deploy Branch**. Esto solo
 
 Podemos verificar desde GitHub si el depliegue se hizo con exito. 
 
-https://github.com/flippiJS/slim-php-heroku/deployments
+https://github.com/flippiJS/slim-php-mysql-heroku/deployments
 
 ![Heroku6](https://i.ibb.co/K95j3fp/heroku6.png)
 
 Desde el botón **View deployment** accedemos a la URL de la app desplegada.
 
-https://slim-php-heroku.herokuapp.com/
+https://slim-php-mysql-heroku.herokuapp.com/
 
 ## Requisitos para correr localmente
 
