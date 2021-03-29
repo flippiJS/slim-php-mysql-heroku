@@ -1,0 +1,14 @@
+{
+    "require": {
+         "slim/slim": "^4.0",
+         "firebase/php-jwt": "^4.0",
+         "oscarotero/psr7-middlewares": "^3.20",
+         "illuminate/database": "@dev",
+        "slim/psr7": "^1.3",
+        "nyholm/psr7": "^1.4",
+        "nyholm/psr7-server": "^1.0",
+        "guzzlehttp/psr7": "^1.8",
+        "http-interop/http-factory-guzzle": "^1.0",
+        "laminas/laminas-diactoros": "^2.5"
+     }
+ }
