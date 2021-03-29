@@ -53,6 +53,14 @@ Desde el botón **View deployment** accedemos a la URL de la app desplegada.
 
 https://slim-php-mysql-heroku.herokuapp.com/
 
+## 4- Crear y configurar la base de datos MySQL (RemoteMysql)
+
+Para esto vamos a crear una cuenta en RemoteMysql -> https://remotemysql.com/login.php que nos permite acceder gratuitamente a un servidor MySQL en la nube. 
+
+En la parte de **Create Account** completamos los datos:
+
+![mysql1](https://i.ibb.co/rbZ7VXw/Screenshot-at-Mar-29-19-41-04.png)
+
 ## Requisitos para correr localmente
 
 - Instalar PHP o XAMPP (https://www.php.net/downloads.php o https://www.apachefriends.org/es/download.html)
