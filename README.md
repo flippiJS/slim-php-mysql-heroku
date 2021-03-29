@@ -140,6 +140,20 @@ php -S localhost:666 -t app
 
 - Abrir desde http://localhost:666/
 
+## Archivo .env localmente
+
+Crear en la raiz del proyecto el archivo `.env` tomando de referencia `.env.example`
+
+Agregamos los siguientes datos Clave -> Valor:
+
+```sh
+MYSQL_HOST=remotemysql.com (campo "Server" de los datos que guardamos al crear la base en remotemysql.com)
+MYSQL_PORT=3306 (campo "Port" de los datos que guardamos al crear la base en remotemysql.com)
+MYSQL_USER=elcNx8VTCx (campo "Username" de los datos que guardamos al crear la base en remotemysql.com)
+MYSQL_PASS=1234 (campo "Password" de los datos que guardamos al crear la base en remotemysql.com)
+MYSQL_DB=elcNx8VTCx (campo "Database Name" de los datos que guardamos al crear la base en remotemysql.com)
+```
+
 ## Ayuda
 Cualquier duda o consulta por el canal de slack
 
