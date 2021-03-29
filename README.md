@@ -47,7 +47,7 @@ Podemos verificar desde GitHub si el depliegue se hizo con exito.
 
 https://github.com/flippiJS/slim-php-mysql-heroku/deployments
 
-![Heroku6](https://i.ibb.co/K95j3fp/heroku6.png)
+![Heroku6](https://i.ibb.co/M87vVmd/Screenshot-at-Mar-29-19-44-49.png)
 
 Desde el botón **View deployment** accedemos a la URL de la app desplegada.
 
