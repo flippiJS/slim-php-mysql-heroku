@@ -16,7 +16,11 @@ class UsuarioController extends Usuario
         $usr->clave = $clave;
         $usr->crearUsuario();
 
-        return $response->withJson(array("mensaje" => "Usuario creado con exito"));;
+        $payload = json_encode(array("mensaje" => "Usuario creado con exito"));
+
+        $response->getBody()->write($payload);
+        return $response
+          ->withHeader('Content-Type', 'application/json');
     }
 
     public function TraerUno($request, $response, $args)
@@ -24,8 +28,11 @@ class UsuarioController extends Usuario
         // Buscamos usuario por nombre
         $usr = $args['usuario'];
         $usuario = Usuario::obtenerUsuario($usr);
-        $respuesta = $response->withJson($usuario, 200);
-        return $respuesta;
+        $payload = json_encode($usuario);
+
+        $response->getBody()->write($payload);
+        return $response
+          ->withHeader('Content-Type', 'application/json');
     }
 
     public function TraerTodos($request, $response, $args)
