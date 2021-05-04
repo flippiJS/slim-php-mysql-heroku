@@ -1,4 +1,5 @@
 <?php
+/* mmadou */
 class AccesoDatos
 {
     private static $objAccesoDatos;
