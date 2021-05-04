@@ -1,7 +1,8 @@
 <?php
 require_once './models/Usuario.php';
+require_once './interfaces/IApiUsable.php';
 
-class UsuarioController extends Usuario
+class UsuarioController extends Usuario implements IApiUsable
 {
     public function CargarUno($request, $response)
     {
@@ -39,6 +40,34 @@ class UsuarioController extends Usuario
     {
         $lista = Usuario::obtenerTodos();
         $payload = json_encode(array("listaUsuario" => $lista));
+
+        $response->getBody()->write($payload);
+        return $response
+          ->withHeader('Content-Type', 'application/json');
+    }
+    
+    public function ModificarUno($request, $response, $args)
+    {
+        $parametros = $request->getParsedBody();
+
+        $nombre = $parametros['nombre'];
+        Usuario::modificarUsuario($nombre);
+
+        $payload = json_encode(array("mensaje" => "Usuario modificado con exito"));
+
+        $response->getBody()->write($payload);
+        return $response
+          ->withHeader('Content-Type', 'application/json');
+    }
+
+    public function BorrarUno($request, $response, $args)
+    {
+        $parametros = $request->getParsedBody();
+
+        $usuarioId = $parametros['usuarioId'];
+        Usuario::borrarUsuario($usuarioId);
+
+        $payload = json_encode(array("mensaje" => "Usuario borrado con exito"));
 
         $response->getBody()->write($payload);
         return $response
