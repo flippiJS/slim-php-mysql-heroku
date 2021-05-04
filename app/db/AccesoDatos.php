@@ -4,6 +4,7 @@ class AccesoDatos
 {
     private static $objAccesoDatos;
     private $objetoPDO;
+    private $nada;
 
     private function __construct()
     {
