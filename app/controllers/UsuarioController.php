@@ -4,7 +4,7 @@ require_once './interfaces/IApiUsable.php';
 
 class UsuarioController extends Usuario implements IApiUsable
 {
-    public function CargarUno($request, $response)
+    public function CargarUno($request, $response, $args)
     {
         $parametros = $request->getParsedBody();
 
