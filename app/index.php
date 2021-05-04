@@ -20,8 +20,14 @@ $app = AppFactory::create();
 // Add error middleware
 $app->addErrorMiddleware(true, true, true);
 
+// Enable CORS
+$app->add(function (Request $request, RequestHandlerInterface $handler): Response {
+    $response = $handler->handle($request);
+    $response = $response->withHeader('Access-Control-Allow-Origin', '*');
+    return $response;
+});
 
-// Usuarios
+// Routes
 $app->group('/usuarios', function (RouteCollectorProxy $group) {
     $group->get('[/]', \UsuarioController::class . ':TraerTodos');
     $group->get('/{usuario}', \UsuarioController::class . ':TraerUno');
@@ -29,7 +35,7 @@ $app->group('/usuarios', function (RouteCollectorProxy $group) {
   });
 
 $app->get('[/]', function (Request $request, Response $response) {    
-    $response->getBody()->write("GET => Bienvenido!!! a SlimFramework");
+    $response->getBody()->write("Slim Framework 4 PHP");
     return $response;
 
 });
