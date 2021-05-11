@@ -122,11 +122,16 @@ C:\xampp\htdocs\
 - Acceder por linea de comandos a la carpeta del proyecto y luego instalar Slim framework via Compose
 
 ```sh
-cd C:\xampp\htdocs\
+cd C:\xampp\htdocs\<ruta-del-repo-clonado>
 composer update
 ```
+- En el archivo index.php agregar la siguiente linea debajo de `AppFactory::create();`
 
-- Abrir desde http://localhost:8080/
+```sh
+// Set base path
+$app->setBasePath('/app');
+```
+- Abrir desde http://localhost:8080/app
 
 ## Correr localmente via PHP
 
@@ -142,7 +147,7 @@ php -S localhost:666 -t app
 
 ## Archivo .env localmente
 
-Crear en la raiz del proyecto el archivo `.env` tomando de referencia `.env.example`
+Crear dentro de la carpeta `/app/` el archivo `.env` tomando de referencia `.env.example`
 
 Agregamos los siguientes datos Clave -> Valor:
 
