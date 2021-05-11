@@ -16,6 +16,10 @@ require_once './db/AccesoDatos.php';
 
 require_once './controllers/UsuarioController.php';
 
+// Load ENV
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->safeLoad();
+
 // Instantiate App
 $app = AppFactory::create();
 
