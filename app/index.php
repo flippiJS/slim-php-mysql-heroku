@@ -55,8 +55,8 @@ $app->group('/jwt', function (RouteCollectorProxy $group) {
   });
 
   $group->post('/devolverPayLoad', function (Request $request, Response $response) {
-    $parametros = $request->getParsedBody();
-    $token = $parametros['token'];
+    $header = $request->getHeaderLine('Authorization');
+    $token = trim(explode("Bearer", $header)[1]);
 
     try {
       $payload = json_encode(array('payload' => AutentificadorJWT::ObtenerPayLoad($token)));
@@ -70,8 +70,8 @@ $app->group('/jwt', function (RouteCollectorProxy $group) {
   });
 
   $group->post('/devolverDatos', function (Request $request, Response $response) {
-    $parametros = $request->getParsedBody();
-    $token = $parametros['token'];
+    $header = $request->getHeaderLine('Authorization');
+    $token = trim(explode("Bearer", $header)[1]);
 
     try {
       $payload = json_encode(array('datos' => AutentificadorJWT::ObtenerData($token)));
@@ -85,8 +85,8 @@ $app->group('/jwt', function (RouteCollectorProxy $group) {
   });
 
   $group->post('/verificarToken', function (Request $request, Response $response) {
-    $parametros = $request->getParsedBody();
-    $token = $parametros['token'];
+    $header = $request->getHeaderLine('Authorization');
+    $token = trim(explode("Bearer", $header)[1]);
     $esValido = false;
 
     try {
