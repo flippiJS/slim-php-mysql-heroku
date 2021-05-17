@@ -54,7 +54,7 @@ $app->group('/jwt', function (RouteCollectorProxy $group) {
       ->withHeader('Content-Type', 'application/json');
   });
 
-  $group->post('/devolverPayLoad', function (Request $request, Response $response) {
+  $group->get('/devolverPayLoad', function (Request $request, Response $response) {
     $header = $request->getHeaderLine('Authorization');
     $token = trim(explode("Bearer", $header)[1]);
 
@@ -69,7 +69,7 @@ $app->group('/jwt', function (RouteCollectorProxy $group) {
       ->withHeader('Content-Type', 'application/json');
   });
 
-  $group->post('/devolverDatos', function (Request $request, Response $response) {
+  $group->get('/devolverDatos', function (Request $request, Response $response) {
     $header = $request->getHeaderLine('Authorization');
     $token = trim(explode("Bearer", $header)[1]);
 
@@ -84,7 +84,7 @@ $app->group('/jwt', function (RouteCollectorProxy $group) {
       ->withHeader('Content-Type', 'application/json');
   });
 
-  $group->post('/verificarToken', function (Request $request, Response $response) {
+  $group->get('/verificarToken', function (Request $request, Response $response) {
     $header = $request->getHeaderLine('Authorization');
     $token = trim(explode("Bearer", $header)[1]);
     $esValido = false;
