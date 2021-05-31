@@ -59,7 +59,7 @@ class UsuarioController implements IApiUsable
   {
     $parametros = $request->getParsedBody();
 
-    $usrModificado = $parametros['nombre'];
+    $usrModificado = $parametros['usuario'];
     $usuarioId = $args['id'];
 
     $usuario = new Usuario();
