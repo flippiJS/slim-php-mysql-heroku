@@ -62,14 +62,19 @@ class UsuarioController implements IApiUsable
     $usrModificado = $parametros['usuario'];
     $usuarioId = $args['id'];
 
-    $usuario = new Usuario();
-    // Buscamos el usuario
-    $usr  = $usuario->find($usuarioId);
-    // Modificamos
-    $usr->usuario = $usrModificado;
-    // Guardamos
-    $usr->save();
-    $payload = json_encode(array("mensaje" => "Usuario modificado con exito"));
+    // Conseguimos el objeto
+    $usr = Usuario::find($usuarioId);
+
+    // Si existe
+    if (count($usr) >= 1) {
+      // Seteamos un nuevo usuario
+      $usr->usuario = $usrModificado;
+      // Guardamos en base de datos
+      $usr->save();
+      $payload = json_encode(array("mensaje" => "Usuario modificado con exito"));
+    } else {
+      $payload = json_encode(array("mensaje" => "Usuario no encontrado"));
+    }
 
     $response->getBody()->write($payload);
     return $response
@@ -79,11 +84,11 @@ class UsuarioController implements IApiUsable
   public function BorrarUno($request, $response, $args)
   {
     $usuarioId = $args['id'];
-    $usuario = new Usuario();
     // Buscamos el usuario
-    $usr  = $usuario->find($usuarioId);
+    $usuario = Usuario::find($usuarioId);
     // Borramos
-    $usr->delete();
+    $usuario->delete();
+
     $payload = json_encode(array("mensaje" => "Usuario borrado con exito"));
 
     $response->getBody()->write($payload);
