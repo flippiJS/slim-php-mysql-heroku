@@ -63,10 +63,10 @@ class UsuarioController implements IApiUsable
     $usuarioId = $args['id'];
 
     // Conseguimos el objeto
-    $usr = Usuario::find($usuarioId);
+    $usr = Usuario::where('id', '=', $usuarioId)->first();
 
     // Si existe
-    if (!$usr->isEmpty()) {
+    if (count($usr) >= 1) {
       // Seteamos un nuevo usuario
       $usr->usuario = $usrModificado;
       // Guardamos en base de datos
