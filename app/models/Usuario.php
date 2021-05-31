@@ -12,6 +12,7 @@ class Usuario extends Model
     protected $primaryKey = 'id';
     protected $table = 'usuarios';
     public $incrementing = true;
+    public $timestamps = false;
 
     const DELETED_AT = 'fechaBaja';
 
