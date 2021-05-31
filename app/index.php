@@ -22,6 +22,8 @@ $app = AppFactory::create();
 
 // Add error middleware
 $app->addErrorMiddleware(true, true, true);
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
 
 // Eloquent
 $container=$app->getContainer();
