@@ -60,9 +60,11 @@ class UsuarioController implements IApiUsable
     $parametros = $request->getParsedBody();
 
     $nombre = $parametros['nombre'];
+    $usuarioId = $args['id'];
+
     $usuario = new Usuario();
     // Buscamos el usuario
-    $usr  = $usuario->find($nombre);
+    $usr  = $usuario->find($usuarioId);
     // Modificamos
     $usr->nombre = $nombre;
     // Guardamos
@@ -76,9 +78,7 @@ class UsuarioController implements IApiUsable
 
   public function BorrarUno($request, $response, $args)
   {
-    $parametros = $request->getParsedBody();
-
-    $usuarioId = $parametros['usuarioId'];
+    $usuarioId = $args['id'];
     $usuario = new Usuario();
     // Buscamos el usuario
     $usr  = $usuario->find($usuarioId);
