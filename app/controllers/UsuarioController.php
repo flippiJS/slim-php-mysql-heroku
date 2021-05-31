@@ -59,14 +59,14 @@ class UsuarioController implements IApiUsable
   {
     $parametros = $request->getParsedBody();
 
-    $nombre = $parametros['nombre'];
+    $usrModificado = $parametros['nombre'];
     $usuarioId = $args['id'];
 
     $usuario = new Usuario();
     // Buscamos el usuario
     $usr  = $usuario->find($usuarioId);
     // Modificamos
-    $usr->nombre = $nombre;
+    $usr->usuario = $usrModificado;
     // Guardamos
     $usr->save();
     $payload = json_encode(array("mensaje" => "Usuario modificado con exito"));
