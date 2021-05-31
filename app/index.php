@@ -4,10 +4,10 @@ ini_set('display_errors', 1);
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Factory\AppFactory;
 use Slim\Routing\RouteCollectorProxy;
-use Slim\Routing\RouteContext;
+use Illuminate\Database\Capsule\Manager as Capsule;
+
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -25,6 +25,24 @@ $app = AppFactory::create();
 
 // Add error middleware
 $app->addErrorMiddleware(true, true, true);
+
+// Eloquent
+$container=$app->getContainer();
+
+$capsule = new Capsule;
+$capsule->addConnection([
+    'driver'    => 'mysql',
+    'host'      => $_ENV['MYSQL_HOST'],
+    'database'  => $_ENV['MYSQL_DB'],
+    'username'  => $_ENV['MYSQL_USER'],
+    'password'  => $_ENV['MYSQL_PASS'],
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => '',
+]);
+
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
 
 
 // Routes
