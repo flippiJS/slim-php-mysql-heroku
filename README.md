@@ -131,7 +131,7 @@ composer update
 // Set base path
 $app->setBasePath('/app');
 ```
-- Abrir desde http://localhost:8080/app
+- Abrir desde http://localhost/app ó http://localhost:8080/app (depende del puerto configurado en el panel del XAMPP)
 
 ## Correr localmente via PHP
 
