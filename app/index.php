@@ -1,4 +1,5 @@
 <?php
+// Error Handling
 error_reporting(-1);
 ini_set('display_errors', 1);
 
@@ -26,6 +27,8 @@ $app = AppFactory::create();
 // Add error middleware
 $app->addErrorMiddleware(true, true, true);
 
+// Add parse body
+$app->addBodyParsingMiddleware();
 
 // Routes
 $app->group('/usuarios', function (RouteCollectorProxy $group) {
