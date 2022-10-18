@@ -162,4 +162,4 @@ MYSQL_DB=elcNx8VTCx (campo "Database Name" de los datos que guardamos al crear l
 ## Ayuda
 Cualquier duda o consulta por el canal de slack
 
-### 2021 - UTN FRA
+### 2022 - UTN FRA
