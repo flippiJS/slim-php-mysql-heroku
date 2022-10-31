@@ -13,7 +13,7 @@ use Slim\Routing\RouteContext;
 require __DIR__ . '/../vendor/autoload.php';
 
 require_once './db/AccesoDatos.php';
-// require_once './middlewares/Logger.php';
+require_once './middlewares/Logger.php';
 
 require_once './controllers/UsuarioController.php';
 
@@ -40,7 +40,6 @@ $app->group('/usuarios', function (RouteCollectorProxy $group) {
 $app->get('[/]', function (Request $request, Response $response) {    
     $response->getBody()->write("Slim Framework 4 PHP");
     return $response;
-
-});
+})->add(new LoggerMiddleware());
 
 $app->run();
