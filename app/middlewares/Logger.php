@@ -18,11 +18,14 @@ class LoggerMiddleware
     {
         
         $response = $handler->handle($request);
-        $existingContent = (string) $response->getBody();
+        $existingContent = json_decode($response->getBody());
     
         $response = new Response();
-        $response->getBody()->write('Fecha:'. date('Y-m-d H:i:s') . ' -- Metodo: ' . $request->getMethod() . " -- URL: " . $request->getUri() . " -- Respuesta:" . $existingContent);
-    
-        return $response;
+        $existingContent['Hora'] = date('Y-m-d H:i:s');
+        
+        $payload = json_encode($existingContent);
+
+        $response->getBody()->write($payload);
+        return $response->withHeader('Content-Type', 'application/json');
     }
 }
