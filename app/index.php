@@ -39,6 +39,10 @@ $app->group('/usuarios', function (RouteCollectorProxy $group) {
 
 $app->get('[/]', function (Request $request, Response $response) {    
     $payload = json_encode(array("mensaje" => "Slim Framework 4 PHP"));
+    
+    // Pausa para probar el middleware (10 segundos)
+    sleep(10);
+    
     $response->getBody()->write($payload);
     return $response->withHeader('Content-Type', 'application/json');
 })->add(new LoggerMiddleware());
