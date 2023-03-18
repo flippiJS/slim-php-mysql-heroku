@@ -1,3 +1,5 @@
+> **⚠️ Atención** Esta opción dejó de ser gratuita debido a cambios en la plataforma de Heroku. [Mas info](https://help.heroku.com/RSBRUH58/removal-of-heroku-free-product-plans-faq).
+
 Aplicación Slim Framework 4 PHP con despliegue automático en Heroku.
 ==============================
 
