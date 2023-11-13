@@ -16,36 +16,33 @@ class AuthMiddleware
      */
     public function __invoke(Request $request, RequestHandler $handler): Response
     {   
-        $parametros = $request->getQueryParams();
+        $header = $request->getHeaderLine('Authorization');
+        $token = trim(explode("Bearer", $header)[1]);
 
-        $sector = $parametros['sector'];
-
-        if ($sector === 'admin') {
+        try {
+            AutentificadorJWT::VerificarToken($token);
             $response = $handler->handle($request);
-        } else {
+        } catch (Exception $e) {
             $response = new Response();
-            $payload = json_encode(array('mensaje' => 'No sos Admin'));
+            $payload = json_encode(array('mensaje' => 'ERROR: Hubo un error con el TOKEN'));
             $response->getBody()->write($payload);
         }
-
         return $response->withHeader('Content-Type', 'application/json');
     }
 
+    public static function verificarToken(Request $request, RequestHandler $handler): Response
+    {
+        $header = $request->getHeaderLine('Authorization');
+        $token = trim(explode("Bearer", $header)[1]);
 
-    public function VerificarRol(Request $request, RequestHandler $handler): Response
-    {   
-        $parametros = $request->getQueryParams();
-
-        $sector = $parametros['sector'];
-
-        if ($sector === 'admin') {
+        try {
+            AutentificadorJWT::VerificarToken($token);
             $response = $handler->handle($request);
-        } else {
+        } catch (Exception $e) {
             $response = new Response();
-            $payload = json_encode(array('mensaje' => 'No sos Admin'));
+            $payload = json_encode(array('mensaje' => 'ERROR: Hubo un error con el TOKEN'));
             $response->getBody()->write($payload);
         }
-
         return $response->withHeader('Content-Type', 'application/json');
     }
 }
