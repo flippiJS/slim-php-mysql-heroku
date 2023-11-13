@@ -117,7 +117,7 @@ $app->group('/auth', function (RouteCollectorProxy $group) {
     $usuario = $parametros['usuario'];
     $contraseña = $parametros['contraseña'];
 
-    if($contraseña == '1234'){ // EJEMPLO!!! Acá se deberia ir a validar el usuario contra la DB
+    if($usuario == 'prueba' && $contraseña == '1234'){ // EJEMPLO!!! Acá se deberia ir a validar el usuario contra la DB
       $datos = array('usuario' => $usuario);
 
       $token = AutentificadorJWT::CrearToken($datos);
