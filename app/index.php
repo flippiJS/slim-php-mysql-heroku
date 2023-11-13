@@ -12,7 +12,7 @@ use Slim\Routing\RouteContext;
 require __DIR__ . '/../vendor/autoload.php';
 
 require_once './db/AccesoDatos.php';
-require_once './middlewares/AutentificadorJWT.php';
+require_once './utils/AutentificadorJWT.php';
 
 require_once './controllers/UsuarioController.php';
 
@@ -34,7 +34,7 @@ $app->group('/usuarios', function (RouteCollectorProxy $group) {
   $group->post('[/]', \UsuarioController::class . ':CargarUno');
 });
 
-// JWT test routes
+// JWT test
 $app->group('/jwt', function (RouteCollectorProxy $group) {
 
   $group->post('/crearToken', function (Request $request, Response $response) {    
@@ -104,6 +104,27 @@ $app->group('/jwt', function (RouteCollectorProxy $group) {
     return $response
       ->withHeader('Content-Type', 'application/json');
   });
+});
+
+// JWT en login
+$app->group('/auth', function (RouteCollectorProxy $group) {
+
+  $group->post('/login', function (Request $request, Response $response) {    
+    $parametros = $request->getParsedBody();
+
+    $usuario = $parametros['usuario'];
+    $contraseña = $parametros['contraseña'];
+
+    $datos = array('usuario' => $usuario);
+
+    $token = AutentificadorJWT::CrearToken($datos);
+    $payload = json_encode(array('jwt' => $token));
+
+    $response->getBody()->write($payload);
+    return $response
+      ->withHeader('Content-Type', 'application/json');
+  });
+
 });
 
 
