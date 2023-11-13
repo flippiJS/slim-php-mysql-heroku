@@ -15,6 +15,8 @@ require_once './db/AccesoDatos.php';
 require_once './utils/AutentificadorJWT.php';
 
 require_once './controllers/UsuarioController.php';
+require_once './middlewares/AuthMiddleware.php';
+
 
 // Load ENV
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
