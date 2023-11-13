@@ -117,10 +117,14 @@ $app->group('/auth', function (RouteCollectorProxy $group) {
     $usuario = $parametros['usuario'];
     $contraseña = $parametros['contraseña'];
 
-    $datos = array('usuario' => $usuario);
+    if($contraseña == '1234'){ // EJEMPLO!!! Acá se deberia ir a validar el usuario contra la DB
+      $datos = array('usuario' => $usuario);
 
-    $token = AutentificadorJWT::CrearToken($datos);
-    $payload = json_encode(array('jwt' => $token));
+      $token = AutentificadorJWT::CrearToken($datos);
+      $payload = json_encode(array('jwt' => $token));
+    } else {
+      $payload = json_encode(array('error' => 'Usuario o contraseña incorrectos'));
+    }
 
     $response->getBody()->write($payload);
     return $response
